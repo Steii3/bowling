@@ -288,6 +288,14 @@ namespace Bowling2
             datagrid.Update();
         }
 
-       
+  
+
+        private void tabControlCompetition_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Grid_update("centre");
+            Grid_update("club");
+            Grid_update("competition");
+            Grid_update("licencie");
+        }
     }
 }

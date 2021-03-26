@@ -65,8 +65,6 @@
             this.txtFindCentre = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.tabPage4 = new System.Windows.Forms.TabPage();
-            this.modifCompBtn = new System.Windows.Forms.Button();
-            this.supprCompBtn = new System.Windows.Forms.Button();
             this.label8 = new System.Windows.Forms.Label();
             this.cmbSelectCompetition = new System.Windows.Forms.ComboBox();
             this.dataGridViewCompetition = new System.Windows.Forms.DataGridView();
@@ -192,6 +190,7 @@
             this.tabControlCompetition.SelectedIndex = 0;
             this.tabControlCompetition.Size = new System.Drawing.Size(776, 472);
             this.tabControlCompetition.TabIndex = 4;
+            this.tabControlCompetition.SelectedIndexChanged += new System.EventHandler(this.tabControlCompetition_SelectedIndexChanged);
             // 
             // tabPage1
             // 
@@ -441,8 +440,6 @@
             // 
             // tabPage4
             // 
-            this.tabPage4.Controls.Add(this.modifCompBtn);
-            this.tabPage4.Controls.Add(this.supprCompBtn);
             this.tabPage4.Controls.Add(this.label8);
             this.tabPage4.Controls.Add(this.cmbSelectCompetition);
             this.tabPage4.Controls.Add(this.dataGridViewCompetition);
@@ -455,25 +452,6 @@
             this.tabPage4.TabIndex = 3;
             this.tabPage4.Text = "Compétitions";
             this.tabPage4.UseVisualStyleBackColor = true;
-            // 
-            // modifCompBtn
-            // 
-            this.modifCompBtn.Location = new System.Drawing.Point(121, 408);
-            this.modifCompBtn.Name = "modifCompBtn";
-            this.modifCompBtn.Size = new System.Drawing.Size(85, 35);
-            this.modifCompBtn.TabIndex = 17;
-            this.modifCompBtn.Text = "modifier ligne selectionné";
-            this.modifCompBtn.UseVisualStyleBackColor = true;
-            // 
-            // supprCompBtn
-            // 
-            this.supprCompBtn.Location = new System.Drawing.Point(18, 408);
-            this.supprCompBtn.Name = "supprCompBtn";
-            this.supprCompBtn.Size = new System.Drawing.Size(85, 35);
-            this.supprCompBtn.TabIndex = 16;
-            this.supprCompBtn.Text = "supprimer ligne selectionné";
-            this.supprCompBtn.UseVisualStyleBackColor = true;
-            this.supprCompBtn.Click += new System.EventHandler(this.supprCompBtn_Click);
             // 
             // label8
             // 
@@ -602,8 +580,6 @@
         private System.Windows.Forms.Button modifLicencieBtn;
         private System.Windows.Forms.Button modifClubBtn;
         private System.Windows.Forms.Button supprClubBtn;
-        private System.Windows.Forms.Button modifCompBtn;
-        private System.Windows.Forms.Button supprCompBtn;
     }
 }
 
