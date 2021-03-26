@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.Windows.Forms;
 
@@ -87,34 +88,48 @@ namespace Bowling2
 
 
         #region modifier_boutton_form
-        private void modifierLicenciésToolStripMenuItem_Click(object sender, EventArgs e)
+
+        private void modifLicencieBtn_Click(object sender, EventArgs e)
         {
             form_licencie.set_isCréer(false);
             form_licencie.StartPosition = FormStartPosition.CenterScreen;
-            form_licencie.ShowDialog(this); 
-            
+            form_licencie.ShowDialog(this);
+        }
+        private void modifClubBtn_Click(object sender, EventArgs e)
+        {
+            if (dataGridViewClub.SelectedRows.Count >= 1)
+            {
+                List<string> Valeurs = new List<string>();
+                string row_text = "";
+                DataGridViewCellCollection row = dataGridViewClub.SelectedRows[0].Cells;
+                foreach (DataGridViewCell aCell in row)
+                {
+
+                    //row_text += row_text != "" ? "," : "" + dataGridViewClub.Columns[aCell.ColumnIndex].HeaderText;
+                    //row_text += '=' + aCell.Value.ToString();
+                    Valeurs.Add(aCell.Value.ToString());
+                    
+                }
+                MessageBox.Show(row_text);
+
+                form_club.populateTxtBox(Valeurs);
+                form_club.set_isCréer(false);
+                form_club.StartPosition = FormStartPosition.CenterScreen;
+                form_club.ShowDialog(this);
+                
+                
+            }
+            else
+            {
+                MessageBox.Show("ERREUR, rien n'est selectionné");
+            }
+           
         }
 
-        private void modifierClubsToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            form_club.set_isCréer(false);
-            form_club.StartPosition = FormStartPosition.CenterScreen;
-            form_club.ShowDialog(this); 
-        }
 
-        private void modifierCentresToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            form_centre.set_isCréer(false);
-            form_centre.StartPosition = FormStartPosition.CenterScreen;
-            form_centre.ShowDialog(this);
-        }
+ 
 
-        private void modifierCompétitionsToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            form_competition.set_isCréer(false);
-            form_competition.StartPosition = FormStartPosition.CenterScreen;
-            form_competition.ShowDialog(this); 
-        }
+      
 
         #endregion 
 
@@ -154,7 +169,7 @@ namespace Bowling2
             {
                 DataGridViewRow Ligne = this.dataGridViewCentre.SelectedRows[0];
 
-
+                
 
                 SQL_control.Delete("centre", int.Parse(Ligne.Cells["id"].Value.ToString()));
             }
@@ -229,13 +244,13 @@ namespace Bowling2
         #endregion
         void Grid_update(string table)
         {
-            //if (table == "centre")
-            //{
-            //    //DataGridView datagrid, TextBox text,ComboBox combo
-            //    DataGridView datagrid = dataGridViewCentre;
-            //    TextBox textbox = txtFindCentre;
-            //    ComboBox combo = cmbSelectCentre;
-            //}
+             /*sert a changer le gridview en fonction de la recherche faite, 
+             * a besoin  :
+             *              du gridview qui vas etre affecté
+             *              du textbox qui fait la recherche
+             *              du combobox qui choisit sur quoi est la recherche (num,nom...)
+             */
+
             DataGridView datagrid = dataGridViewCentre;
             TextBox textbox = txtFindCentre;
             ComboBox combo = cmbSelectCentre;
@@ -266,13 +281,7 @@ namespace Bowling2
                             break;
                 }
 
-            /*sert a changer le gridview en fonction de la recherche faite, 
-             * a besoin  :
-             *              du gridview qui vas etre affecté
-             *              du textbox qui fait la recherche
-             *              du combobox qui choisit sur quoi est la recherche (num,nom...)
-             */
-
+      
             string search = textbox.Text;
             string searchby = combo.SelectedItem.ToString();
             if (search == "") {
@@ -288,6 +297,8 @@ namespace Bowling2
             datagrid.Update();
         }
 
+
+
   
 
         private void tabControlCompetition_SelectedIndexChanged(object sender, EventArgs e)
@@ -297,5 +308,7 @@ namespace Bowling2
             Grid_update("competition");
             Grid_update("licencie");
         }
+
+        
     }
 }

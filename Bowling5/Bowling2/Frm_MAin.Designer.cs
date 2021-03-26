@@ -217,6 +217,7 @@
             this.modifLicencieBtn.TabIndex = 15;
             this.modifLicencieBtn.Text = "modifier ligne selectionné";
             this.modifLicencieBtn.UseVisualStyleBackColor = true;
+            this.modifLicencieBtn.Click += new System.EventHandler(this.modifLicencieBtn_Click);
             // 
             // supprLicencieBtn
             // 
@@ -308,6 +309,7 @@
             this.modifClubBtn.TabIndex = 17;
             this.modifClubBtn.Text = "modifier ligne selectionné";
             this.modifClubBtn.UseVisualStyleBackColor = true;
+            this.modifClubBtn.Click += new System.EventHandler(this.modifClubBtn_Click);
             // 
             // supprClubBtn
             // 

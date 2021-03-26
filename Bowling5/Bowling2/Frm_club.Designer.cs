@@ -116,6 +116,7 @@
             this.txt_nom.Name = "txt_nom";
             this.txt_nom.Size = new System.Drawing.Size(255, 20);
             this.txt_nom.TabIndex = 15;
+            this.txt_nom.TextChanged += new System.EventHandler(this.txt_nom_TextChanged);
             // 
             // txt_numero
             // 

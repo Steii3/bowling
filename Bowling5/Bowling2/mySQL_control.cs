@@ -74,13 +74,17 @@ namespace Bowling2
             return listescollonnes;
 
         }
-        public void Insert(string deleteCommand)
+        public void Insert(string table,string args) 
         {
-                
+            string insertquery = String.Format("INSERT INTO {0} VALUES ({1})", table, args);
+
+
+                 
+            
             connection.Open();
             MySqlCommand cmd = new MySqlCommand();
             cmd.Connection = connection;
-            cmd.CommandText = "delete from Customers where ID='" + "1" + "';";
+            cmd.CommandText = insertquery;
             cmd.ExecuteNonQuery();
             connection.Close();
         }
