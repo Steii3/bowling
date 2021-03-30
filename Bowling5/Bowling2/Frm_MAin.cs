@@ -100,17 +100,11 @@ namespace Bowling2
             if (dataGridViewClub.SelectedRows.Count >= 1)
             {
                 List<string> Valeurs = new List<string>();
-                string row_text = "";
                 DataGridViewCellCollection row = dataGridViewClub.SelectedRows[0].Cells;
                 foreach (DataGridViewCell aCell in row)
                 {
-
-                    //row_text += row_text != "" ? "," : "" + dataGridViewClub.Columns[aCell.ColumnIndex].HeaderText;
-                    //row_text += '=' + aCell.Value.ToString();
                     Valeurs.Add(aCell.Value.ToString());
-                    
                 }
-                MessageBox.Show(row_text);
 
                 form_club.populateTxtBox(Valeurs);
                 form_club.set_isCréer(false);

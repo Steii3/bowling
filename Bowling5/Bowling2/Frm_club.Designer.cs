@@ -31,6 +31,7 @@
             this.btn_annuler = new System.Windows.Forms.Button();
             this.btn_enregistrer = new System.Windows.Forms.Button();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.cmb_centre = new System.Windows.Forms.ComboBox();
             this.txt_president = new System.Windows.Forms.TextBox();
             this.txt_ville = new System.Windows.Forms.TextBox();
             this.txt_nom = new System.Windows.Forms.TextBox();
@@ -42,7 +43,6 @@
             this.label8 = new System.Windows.Forms.Label();
             this.txt_adresse = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
-            this.txt_centre = new System.Windows.Forms.TextBox();
             this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -64,12 +64,14 @@
             this.btn_enregistrer.TabIndex = 17;
             this.btn_enregistrer.Text = "Enregister";
             this.btn_enregistrer.UseVisualStyleBackColor = true;
+            this.btn_enregistrer.Click += new System.EventHandler(this.btn_enregistrer_Click);
             // 
             // tableLayoutPanel1
             // 
             this.tableLayoutPanel1.ColumnCount = 2;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 104F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 261F));
+            this.tableLayoutPanel1.Controls.Add(this.cmb_centre, 1, 5);
             this.tableLayoutPanel1.Controls.Add(this.txt_president, 1, 4);
             this.tableLayoutPanel1.Controls.Add(this.txt_ville, 1, 2);
             this.tableLayoutPanel1.Controls.Add(this.txt_nom, 1, 1);
@@ -81,7 +83,6 @@
             this.tableLayoutPanel1.Controls.Add(this.label8, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.txt_adresse, 1, 3);
             this.tableLayoutPanel1.Controls.Add(this.label7, 0, 0);
-            this.tableLayoutPanel1.Controls.Add(this.txt_centre, 1, 5);
             this.tableLayoutPanel1.Location = new System.Drawing.Point(12, 12);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.Padding = new System.Windows.Forms.Padding(5);
@@ -95,6 +96,14 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(375, 188);
             this.tableLayoutPanel1.TabIndex = 16;
+            // 
+            // cmb_centre
+            // 
+            this.cmb_centre.FormattingEnabled = true;
+            this.cmb_centre.Location = new System.Drawing.Point(112, 158);
+            this.cmb_centre.Name = "cmb_centre";
+            this.cmb_centre.Size = new System.Drawing.Size(255, 21);
+            this.cmb_centre.TabIndex = 19;
             // 
             // txt_president
             // 
@@ -198,13 +207,6 @@
             this.label7.Text = "numero";
             this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // txt_centre
-            // 
-            this.txt_centre.Location = new System.Drawing.Point(112, 158);
-            this.txt_centre.Name = "txt_centre";
-            this.txt_centre.Size = new System.Drawing.Size(255, 20);
-            this.txt_centre.TabIndex = 19;
-            // 
             // Frm_club
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -237,6 +239,6 @@
         private System.Windows.Forms.TextBox txt_adresse;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox txt_president;
-        private System.Windows.Forms.TextBox txt_centre;
+        private System.Windows.Forms.ComboBox cmb_centre;
     }
 }

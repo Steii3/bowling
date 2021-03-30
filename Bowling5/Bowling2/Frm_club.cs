@@ -13,6 +13,8 @@ namespace Bowling2
     public partial class Frm_club : Form
     {
         bool isCréer;
+        List<TextBox> TextBoxes = new List<TextBox>();
+         mySQL_control SQL_control = new mySQL_control();
         public void set_isCréer(bool sent_isCréer)
         {
             isCréer = sent_isCréer;
@@ -20,22 +22,76 @@ namespace Bowling2
         public Frm_club()
         {
             InitializeComponent();
+            TextBoxes.Add(txt_numero);
+            TextBoxes.Add(txt_nom);
+            TextBoxes.Add(txt_ville);
+            TextBoxes.Add(txt_adresse);
+            TextBoxes.Add(txt_president);
+            List<string> listes = new List<string>();
+            DataTable all_centerTable = SQL_control.GetData("select id from centre");
+            //convertie ce tableau en liste
+            for (int i = 0; i < all_centerTable.Rows.Count; i++)
+            {
+                listes.Add(all_centerTable.Rows[i][0].ToString());
+            }
+            cmb_centre.DataSource = listes;
+            Load += new EventHandler(Frm_club_Load);
         }
+        private void Frm_club_Load(object sender, System.EventArgs e)
+        {
+            if (isCréer)
+            {
+                this.empty();
+            }
+        }
+        public void empty()
+        {
+            //txt_numero.Text = "";
+            //txt_nom.Text = "";
+            //txt_ville.Text = "";
+            //txt_adresse.Text = "";
+            //txt_president.Text = "";
+            foreach(TextBox textboxvar in TextBoxes)
+            {
+                textboxvar.Text = "";
+            }
+        }
+        void Text2TextBox(List<String> Text, List<TextBox> textBoxe)
+        {
+            for (int i = 0; i != textBoxe.Count; i++) textBoxe[i].Text = Text[i];
+        }
+        ///<summary>Convertis Les champs des textbox en string pour insert</summary>
+        String TextBox2SQL()
+        { 
+            string Text = "";
+            foreach (TextBox textBoxvar in TextBoxes) Text += ((Text == "") ? "" : ",") + Encap(textBoxvar.Text);
+            return Text;
+        }
+        String Encap(string Texte) { return "'" + Texte + "'"; }
         
         public void populateTxtBox(List<String> Valeurs)
         {
-            txt_numero.Text = Valeurs[0];
-            txt_nom.Text = Valeurs[1];
-            txt_ville.Text = Valeurs[2];
-            txt_adresse.Text = Valeurs[3];
-            txt_president.Text = Valeurs[4];
-            txt_centre.Text = Valeurs[5];
-
+            Text2TextBox(Valeurs, TextBoxes);
+            cmb_centre.SelectedIndex = int.Parse(Valeurs[5]);
         }
 
         private void txt_nom_TextChanged(object sender, EventArgs e)
         {
 
+        }
+         
+        private void btn_enregistrer_Click(object sender, EventArgs e)
+        {
+            if (isCréer)
+            {
+
+                SQL_control.Insert("club", TextBox2SQL() +","+ Encap(cmb_centre.Text));
+            }
+            else
+            {
+
+            }
+            this.Close();
         }
     }
 }
